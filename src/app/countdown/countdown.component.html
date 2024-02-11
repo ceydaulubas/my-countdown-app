@@ -1,23 +1,33 @@
 <div class="container">
+
+    <h1 *ngIf="!hero.title || !hero.date">
+        Write your event title and date and see how much time is left.
+    </h1>
+
     <div class="hero">
         <h1 class="title">{{hero.title }}</h1>
-        <!-- <h1 class="date">{{hero.date}}</h1> -->
-        <h1 class="date">20days, 3h, 15m, 10s</h1>
+        <!-- <h1 class="date">{{ calculateTimeDifference(hero.date) }}</h1> -->
+
+        <h1 class="date" *ngIf="hero.date">{{ calculateTimeDifference(hero.date) }}</h1>
+        <span class="placeholder" *ngIf="!hero.date">No date selected yet.</span>
+
     </div>
     <div class="form-fields">
 
         <mat-form-field appearance="outline" class="kkkk">
             <mat-label>Title</mat-label>
-            <input matInput placeholder="Placeholder" >
+            <input matInput placeholder="..." [(ngModel)]="hero.title">
             <mat-icon matSuffix class="mat-icon-dark-grey">create</mat-icon>
         </mat-form-field>
-        
+
         <mat-form-field appearance="outline" class="kkkk">
             <mat-label>Date</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="hero.date"
+                (ngModelChange)="calculateTimeDifference(hero.date)">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+
 
     </div>
 </div>

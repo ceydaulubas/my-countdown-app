@@ -25,6 +25,7 @@ $common-width-100-percent: 100%;
     @include hero-margin;
     font-family: $common-font-family;
     width: $common-width-100-percent;
+    font-size: fit-content;
 }
 
 .title {
@@ -36,13 +37,14 @@ $common-width-100-percent: 100%;
     // font-size: 28px;
     line-height: 37.8px;
     letter-spacing: -0.02em;
-    font-size: calc(5vw); // Adjust the divisor as needed
+    // font-size: fit-content;
+    font-size: clamp(20px, 5vw, 40px); // Adjust min, max, and step values as needed
+  
 
 }
 
 
 .date {
-    color: #72035D;
     font-family: $common-font-family;
     font-size: 32px;
     font-weight: 400;
