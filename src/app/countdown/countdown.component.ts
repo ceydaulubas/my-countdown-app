@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
 
-import { TimeService } from '../services/time.service'; // Import the service
+import { TimeService } from '../services/time.service';
 
 @Component({
   selector: 'app-countdown',
@@ -32,6 +32,9 @@ export class CountdownComponent {
     title: '',
     date: new Date()
   };
+
+  // added to deselect previous date
+  todayDate: Date = new Date();
 
   onTitleChange(newTitle: string) {
     this.hero.title = newTitle;

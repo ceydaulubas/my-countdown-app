@@ -6,8 +6,6 @@
 
     <div class="hero">
         <h1 class="title">{{hero.title }}</h1>
-        <!-- <h1 class="date">{{ calculateTimeDifference(hero.date) }}</h1> -->
-
         <h1 class="date" *ngIf="hero.date">{{ calculateTimeDifference(hero.date) }}</h1>
         <span class="placeholder" *ngIf="!hero.date">No date selected yet.</span>
 
@@ -22,7 +20,7 @@
 
         <mat-form-field appearance="outline" class="kkkk">
             <mat-label>Date</mat-label>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="hero.date"
+            <input matInput [matDatepicker]="picker" [min]="todayDate" [(ngModel)]="hero.date"
                 (ngModelChange)="calculateTimeDifference(hero.date)">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
