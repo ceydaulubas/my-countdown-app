@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="hero">
+        <h1 class="title">{{hero.title }}</h1>
+        <!-- <h1 class="date">{{hero.date}}</h1> -->
+        <h1 class="date">20days, 3h, 15m, 10s</h1>
+    </div>
+    <div class="form-fields">
+
+        <mat-form-field appearance="outline" class="kkkk">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Placeholder" >
+            <mat-icon matSuffix class="mat-icon-dark-grey">create</mat-icon>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="kkkk">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+</div>
