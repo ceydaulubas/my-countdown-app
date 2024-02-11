@@ -1,31 +1,30 @@
 <div class="container">
 
-    <!-- <h1 *ngIf="!hero.title || !hero.date">
-        Write your event title and date and see how much time is left.
-    </h1> -->
-
     <h1 *ngIf="!hero.title">
         Time to ...
     </h1>
 
     <div class="hero">
         <h1 class="title">{{ hero.title ? 'Time to ' + camelCaseTitle : hero.title }}</h1>
-        <h1 class="date" *ngIf="hero.date">{{ calculateTimeDifference(hero.date) }}</h1>
-        <span class="placeholder" *ngIf="!hero.date">No date selected yet.</span>
-
+        <h1 class="date" *ngIf="hero.date">
+            {{ isToday(hero.date) ? ' 🎉🎉🎉🎉🎉🎉🎉🎉🎉' : calculateTimeDifference(hero.date) }}
+        </h1>
+        <span class="placeholder" *ngIf="!hero.date">No date selected yet. Please select date.</span>
     </div>
+
+
     <div class="form-fields">
 
         <mat-form-field appearance="outline" class="kkkk">
             <mat-label>Title</mat-label>
-            <input matInput placeholder="..." [(ngModel)]="hero.title">
+            <input matInput placeholder="Time to ..." [(ngModel)]="hero.title">
             <mat-icon matSuffix class="mat-icon-dark-grey">create</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="kkkk">
             <mat-label>Date</mat-label>
             <input matInput [matDatepicker]="picker" [min]="todayDate" [(ngModel)]="hero.date" readonly
-                (ngModelChange)="calculateTimeDifference(hero.date)">
+                (ngModelChange)="calculateTimeDifference(hero.date)" placeholder="Select date">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>

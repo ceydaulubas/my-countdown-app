@@ -22,27 +22,40 @@ import { DatePipe } from '@angular/common';
   providers: [provideNativeDateAdapter()],
   imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatDatepickerModule, FormsModule, CommonModule, NgIf],
   styleUrl: './countdown.component.scss'
-
 })
 export class CountdownComponent {
   constructor(private timeService: TimeService) { }
 
   hero: CountdownForm = {
     title: '',
-    date: new Date(),
+    date: null,
   };
 
   // added to deselect previous date
   todayDate: Date = new Date();
 
-  calculateTimeDifference(targetDate: Date): string {
-    return this.timeService.getTimeDifference(targetDate);
+  calculateTimeDifference(targetDate: Date | null): string {
+    if (targetDate) {
+      return this.timeService.getTimeDifference(targetDate);
+    } else {
+      return '';
+    }
   }
 
   get camelCaseTitle() {
-    return this.hero.title.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    return this.hero.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
   }
 
+  isToday(date: Date | null): boolean {
+    if (date === null) {
+      return false;
+    }
+
+    const today = new Date();
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    );
+  }
 }
-
-

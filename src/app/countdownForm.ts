@@ -1,6 +1,6 @@
 export interface CountdownForm {
     title: string;
-    date: Date ;
+    date: null | Date;
     camelCaseTitle?: string; 
   }
   
