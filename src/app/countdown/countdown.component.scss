@@ -5,81 +5,79 @@ $common-display-flex: flex;
 $common-width-100-percent: 100%;
 
 @mixin hero-margin {
-    margin-bottom: $hero-margin-large-screen;
-    
-    @media only screen and (max-width: 480px) {
-        margin-bottom: $hero-margin-small-screen;
-    }
+  margin-bottom: $hero-margin-large-screen;
+
+  @media only screen and (max-width: 480px) {
+    margin-bottom: $hero-margin-small-screen;
+  }
 }
 
 .container {
-    display: $common-display-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  display: $common-display-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .hero {
-    text-align: center;
-    @include hero-margin;
-    font-family: $common-font-family;
-    width: $common-width-100-percent;
-    font-size: fit-content;
+  text-align: center;
+  @include hero-margin;
+  font-family: $common-font-family;
+  width: $common-width-100-percent;
+  font-size: fit-content;
 }
 
 .title {
-    width: 100vw; 
-    margin: 10px 0;
-    color: #72035D;
-    font-family: $common-font-family;
-    font-weight: 800;
-    // font-size: 28px;
-    line-height: 37.8px;
-    letter-spacing: -0.02em;
-    // font-size: fit-content;
-    font-size: clamp(20px, 5vw, 40px); // Adjust min, max, and step values as needed
-  
-
+  width: 100vw;
+  margin: 10px 0;
+  color: #72035d;
+  font-family: $common-font-family;
+  font-weight: 800;
+  // font-size: 28px;
+  line-height: 37.8px;
+  letter-spacing: -0.02em;
+  // font-size: fit-content;
+  font-size: clamp(
+    20px,
+    5vw,
+    40px
+  ); // Adjust min, max, and step values as needed
 }
-
 
 .date {
-    font-family: $common-font-family;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 48px;
-    // font-size: calc(9vw); // Adjust the divisor as needed
-
+  font-family: $common-font-family;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 48px;
+  // font-size: calc(9vw); // Adjust the divisor as needed
 }
 .form-fields {
-    display: $common-display-flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: $common-width-100-percent;
-    max-width: 800px; 
-    padding: 0 10px;
-    
+  display: $common-display-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: $common-width-100-percent;
+  max-width: 800px;
+  padding: 0 10px;
+
+  .kkkk {
+    width: 48%; // Geniş ekranda yan yana durmasını sağlamak için %48 genişliği ayarlayın
+    margin-bottom: 20px; // Form alanları arasındaki dikey boşluğu ayarlayın
+  }
+
+  @media only screen and (max-width: 480px) {
     .kkkk {
-        width: 48%; // Geniş ekranda yan yana durmasını sağlamak için %48 genişliği ayarlayın
-        margin-bottom: 20px; // Form alanları arasındaki dikey boşluğu ayarlayın
+      width: 100%; // Ekran boyutu küçüldüğünde alt alta sıralanması için %100 genişliği ayarlayın
+      margin: 10px 50px;
     }
-
-    @media only screen and (max-width: 480px) {
-        .kkkk {
-            width: 100%; // Ekran boyutu küçüldüğünde alt alta sıralanması için %100 genişliği ayarlayın
-           margin: 10px 50px ;
-
-        }
-    }
+  }
 }
 
 .mat-form-field {
-    width: 100%; // Inputların genişliğini %100 olarak ayarlayın
-    margin-bottom: 20px; // Form alanları arasındaki dikey boşluğu ayarlayın
+  width: 100%; // Inputların genişliğini %100 olarak ayarlayın
+  margin-bottom: 20px; // Form alanları arasındaki dikey boşluğu ayarlayın
 }
 
-
 .mat-icon-dark-grey {
-    color: #707070
+  color: #707070;
 }
