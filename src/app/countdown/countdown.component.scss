@@ -1,14 +1,14 @@
-$hero-margin-small-screen: calc(6vh + 50px);
-$hero-margin-large-screen: calc(2vh + 10px);
+$countdownHeader-margin-small-screen: calc(6vh + 50px);
+$countdownHeader-margin-large-screen: calc(2vh + 10px);
 $common-font-family: 'Open Sauce One', sans-serif;
 $common-display-flex: flex;
 $common-width-100-percent: 100%;
 
-@mixin hero-margin {
-  margin-bottom: $hero-margin-large-screen;
+@mixin countdownHeader-margin {
+  margin-bottom: $countdownHeader-margin-large-screen;
 
   @media only screen and (max-width: 480px) {
-    margin-bottom: $hero-margin-small-screen;
+    margin-bottom: $countdownHeader-margin-small-screen;
   }
 }
 
@@ -20,9 +20,9 @@ $common-width-100-percent: 100%;
   height: 100vh;
 }
 
-.hero {
+.countdownHeader {
   text-align: center;
-  @include hero-margin;
+  @include countdownHeader-margin;
   font-family: $common-font-family;
   width: $common-width-100-percent;
   font-size: fit-content;

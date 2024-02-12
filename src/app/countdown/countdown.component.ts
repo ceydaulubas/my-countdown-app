@@ -37,7 +37,7 @@ import { TimeService } from '../services/time.service'
 export class CountdownComponent implements OnInit, OnDestroy {
   constructor(private timeService: TimeService) {}
 
-  hero: CountdownForm = {
+  countdownForm: CountdownForm = {
     title: '',
     date: null,
   }
@@ -82,7 +82,7 @@ export class CountdownComponent implements OnInit, OnDestroy {
   }
 
   get camelCaseTitle() {
-    return this.hero.title.replace(/\w\S*/g, function (txt) {
+    return this.countdownForm.title.replace(/\w\S*/g, function (txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
     })
   }

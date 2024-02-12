@@ -1,18 +1,17 @@
 <div class="container">
-  <h1 *ngIf="!hero.title">Time to ...</h1>
-
-  <div class="hero">
+  <h1 *ngIf="!countdownForm.title">Time to ...</h1>
+  <div class="countdownHeader">
     <h1 class="title">
-      {{ hero.title ? 'Time to ' + camelCaseTitle : hero.title }}
+      {{ countdownForm.title ? 'Time to ' + camelCaseTitle : countdownForm.title }}
     </h1>
-    <h1 class="date" *ngIf="hero.date">
+    <h1 class="date" *ngIf="countdownForm.date">
       {{
-        isToday(hero.date)
+        isToday(countdownForm.date)
           ? ' 🎉🎉🎉🎉🎉🎉🎉🎉🎉'
-          : calculateTimeDifference(hero.date)
+          : calculateTimeDifference(countdownForm.date)
       }}
     </h1>
-    <span class="placeholder" *ngIf="!hero.date"
+    <span class="placeholder" *ngIf="!countdownForm.date"
       >No date selected yet. Please select date.</span
     >
   </div>
@@ -20,7 +19,7 @@
   <div class="form-fields">
     <mat-form-field appearance="outline" class="kkkk">
       <mat-label>Title</mat-label>
-      <input matInput placeholder="Time to ..." [(ngModel)]="hero.title" />
+      <input matInput placeholder="Time to ..." [(ngModel)]="countdownForm.title" />
       <mat-icon matSuffix class="mat-icon-dark-grey">create</mat-icon>
     </mat-form-field>
 
@@ -30,7 +29,7 @@
         matInput
         [matDatepicker]="picker"
         [min]="todayDate"
-        [(ngModel)]="hero.date"
+        [(ngModel)]="countdownForm.date"
         readonly
         (dateChange)="startCountdown()"
         placeholder="Select date"
