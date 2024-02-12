@@ -32,7 +32,7 @@
         [min]="todayDate"
         [(ngModel)]="hero.date"
         readonly
-        (ngModelChange)="calculateTimeDifference(hero.date)"
+        (dateChange)="startCountdown()"
         placeholder="Select date"
       />
       <mat-datepicker-toggle

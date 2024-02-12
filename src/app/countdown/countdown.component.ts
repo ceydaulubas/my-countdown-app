@@ -1,11 +1,15 @@
-import { Component } from '@angular/core'
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { CountdownForm } from '../countdownForm'
 
 // date picker imports
-import { MatDatepickerModule } from '@angular/material/datepicker'
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+  MatDatepickerModule,
+} from '@angular/material/datepicker'
 import { provideNativeDateAdapter } from '@angular/material/core'
 
 import { FormsModule } from '@angular/forms'
@@ -13,7 +17,6 @@ import { CommonModule } from '@angular/common'
 import { NgIf } from '@angular/common'
 
 import { TimeService } from '../services/time.service'
-import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-countdown',
@@ -31,7 +34,7 @@ import { DatePipe } from '@angular/common'
   ],
   styleUrl: './countdown.component.scss',
 })
-export class CountdownComponent {
+export class CountdownComponent implements OnInit, OnDestroy {
   constructor(private timeService: TimeService) {}
 
   hero: CountdownForm = {
@@ -41,6 +44,34 @@ export class CountdownComponent {
 
   // added to deselect previous date
   todayDate: Date = new Date()
+
+  private intervalId: any
+  selectedDate: any
+
+  @ViewChild('myDatepicker') datepicker: MatDatepicker<Date> | undefined
+  @ViewChild('myDateInput') dateInput: MatDatepickerInput<Date> | undefined
+
+  ngOnInit() {
+    // Listen for changes in the selected date
+    this.dateInput?.dateChange.subscribe((date: Date) => {
+      this.selectedDate = date
+      if (date) {
+        // Check if a date is actually selected
+        this.startCountdown()
+      }
+    })
+  }
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId)
+    }
+  }
+
+  startCountdown() {
+    this.intervalId = setInterval(() => {
+      this.calculateTimeDifference(this.selectedDate)
+    }, 1000)
+  }
 
   calculateTimeDifference(targetDate: Date | null): string {
     if (targetDate) {
