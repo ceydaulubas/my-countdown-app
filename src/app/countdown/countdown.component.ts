@@ -109,18 +109,15 @@ export class CountdownComponent implements OnInit, OnDestroy {
     this.save('title', e.target.value)
     this.countdownForm.title = this.get('title') || ''
   }
-
-  isToday(date: Date | null): boolean {
+  
+isToday(date: Date | null): boolean {
   if (date === null) {
-    console.log("date is null");
     return false;
   }
-  
-  const today = new Date().toDateString();
-  console.log("today:", today);
-  const dateString = date.toDateString();
-  console.log("dateString:", dateString);
 
-  return dateString === today;
+  const today = new Date();
+  const dateFromLocalStorage = new Date(date); // Convert string to date
+
+  return dateFromLocalStorage.toDateString() === today.toDateString();
 }
 }

@@ -5,12 +5,12 @@
       {{ countdownForm.title ? 'Time to ' + camelCaseTitle : countdownForm.title }}
     </h1>
     <h1 class="date" >
-      <!-- {{
+      {{
         isToday(countdownForm.date)
           ? ' 🎉🎉🎉🎉🎉🎉🎉🎉🎉'
           : calculateTimeDifference(countdownForm.date)
-      }} -->
-      {{calculateTimeDifference(countdownForm.date)}}
+      }}
+      <!-- {{calculateTimeDifference(countdownForm.date)}} -->
     </h1>
     <span class="placeholder" *ngIf="!countdownForm.date"
       >No date selected yet. Please select date.</span
