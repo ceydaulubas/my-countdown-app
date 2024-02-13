@@ -115,7 +115,7 @@ export class CountdownComponent implements OnInit, OnDestroy {
     console.log("date is null");
     return false;
   }
-
+  
   const today = new Date().toDateString();
   console.log("today:", today);
   const dateString = date.toDateString();

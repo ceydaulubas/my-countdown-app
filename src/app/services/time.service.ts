@@ -23,7 +23,7 @@ export class TimeService {
     // @ts-ignore
     const seconds = differenceInSeconds(targetDate, now) % 60
 
-    const timeDiff = `${days} days, ${hours} h, ${minutes} m, ${seconds} s`
-    return timeDiff.replace(/,/g, ' ') // Remove commas for a cleaner look
+    const timeDiff = `${days} days, ${hours} h, ${minutes}m, ${seconds}s`
+    return timeDiff
   }
 }
