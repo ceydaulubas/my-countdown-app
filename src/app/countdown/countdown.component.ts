@@ -2,12 +2,13 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
-import { CountdownForm } from '../countdownForm'
+import { CountdownForm } from '../interfaces/countdownForm'
 
-// date picker imports
+// Date picker imports
 import {
   MatDatepicker,
   MatDatepickerInput,
+  MatDatepickerInputEvent,
   MatDatepickerModule,
 } from '@angular/material/datepicker'
 import { provideNativeDateAdapter } from '@angular/material/core'
@@ -52,15 +53,20 @@ export class CountdownComponent implements OnInit, OnDestroy {
   @ViewChild('myDateInput') dateInput: MatDatepickerInput<Date> | undefined
 
   ngOnInit() {
-    // Listen for changes in the selected date
-    this.dateInput?.dateChange.subscribe((date: Date) => {
-      this.selectedDate = date
-      if (date) {
-        // Check if a date is actually selected
-        this.startCountdown()
-      }
-    })
+
+    const val = this.get('title')
+    if (val) {
+      this.countdownForm.title = val
+    }
+    const date = this.get('date')
+    console.log(date)
+    if (date) {
+      this.countdownForm.date = date
+    }
+    this.startCountdown()
+    
   }
+
   ngOnDestroy() {
     if (this.intervalId) {
       clearInterval(this.intervalId)
@@ -69,11 +75,15 @@ export class CountdownComponent implements OnInit, OnDestroy {
 
   startCountdown() {
     this.intervalId = setInterval(() => {
-      this.calculateTimeDifference(this.selectedDate)
+      // this.calculateTimeDifference(this.selectedDate)
+      this.calculateTimeDifference(this.countdownForm.date)
     }, 1000)
   }
 
   calculateTimeDifference(targetDate: Date | null): string {
+    // neww
+    this.save('date', targetDate)
+
     if (targetDate) {
       return this.timeService.getTimeDifference(targetDate)
     } else {
@@ -86,17 +96,31 @@ export class CountdownComponent implements OnInit, OnDestroy {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
     })
   }
+  
+
+  public save(key: string, value: any) {
+    localStorage.setItem(key, value);
+  }
+
+  public get(key: string): any {
+    return localStorage.getItem(key)
+  }
+  public titleChange(e: any) {
+    this.save('title', e.target.value)
+    this.countdownForm.title = this.get('title') || ''
+  }
 
   isToday(date: Date | null): boolean {
-    if (date === null) {
-      return false
-    }
-
-    const today = new Date()
-    return (
-      date.getDate() === today.getDate() &&
-      date.getMonth() === today.getMonth() &&
-      date.getFullYear() === today.getFullYear()
-    )
+  if (date === null) {
+    console.log("date is null");
+    return false;
   }
+
+  const today = new Date().toDateString();
+  console.log("today:", today);
+  const dateString = date.toDateString();
+  console.log("dateString:", dateString);
+
+  return dateString === today;
+}
 }

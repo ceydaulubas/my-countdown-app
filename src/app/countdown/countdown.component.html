@@ -5,11 +5,12 @@
       {{ countdownForm.title ? 'Time to ' + camelCaseTitle : countdownForm.title }}
     </h1>
     <h1 class="date" *ngIf="countdownForm.date">
-      {{
+      <!-- {{
         isToday(countdownForm.date)
           ? ' 🎉🎉🎉🎉🎉🎉🎉🎉🎉'
           : calculateTimeDifference(countdownForm.date)
-      }}
+      }} -->
+      {{calculateTimeDifference(countdownForm.date)}}
     </h1>
     <span class="placeholder" *ngIf="!countdownForm.date"
       >No date selected yet. Please select date.</span
@@ -19,7 +20,7 @@
   <div class="form-fields">
     <mat-form-field appearance="outline" class="kkkk">
       <mat-label>Title</mat-label>
-      <input matInput placeholder="Time to ..." [(ngModel)]="countdownForm.title" />
+      <input matInput placeholder="Time to ..." [(ngModel)]="countdownForm.title" (keyup)=titleChange($event)/>
       <mat-icon matSuffix class="mat-icon-dark-grey">create</mat-icon>
     </mat-form-field>
 

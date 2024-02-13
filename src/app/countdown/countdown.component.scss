@@ -21,37 +21,32 @@ $common-width-100-percent: 100%;
 }
 
 .countdownHeader {
-  text-align: center;
-  @include countdownHeader-margin;
   font-family: $common-font-family;
-  width: $common-width-100-percent;
   font-size: fit-content;
+  text-align: center;
+  width: $common-width-100-percent;
+  @include countdownHeader-margin;
 }
 
 .title {
-  width: 100vw;
-  margin: 10px 0;
   color: #72035d;
-  font-family: $common-font-family;
+  width: 100%;
   font-weight: 800;
-  // font-size: 28px;
   line-height: 37.8px;
   letter-spacing: -0.02em;
-  // font-size: fit-content;
-  font-size: clamp(
-    20px,
-    5vw,
-    40px
-  ); // Adjust min, max, and step values as needed
+  white-space: nowrap;
+  text-overflow: ellipsis;  
+  font-size: clamp(28px, 9vw, 400px); 
 }
 
 .date {
-  font-family: $common-font-family;
-  font-size: 32px;
+  width: 100%;
   font-weight: 400;
   line-height: 48px;
-  // font-size: calc(9vw); // Adjust the divisor as needed
+  font-size: clamp(32px, 9vw, 400px); 
+  margin: 7% 0 4% 0;
 }
+
 .form-fields {
   display: $common-display-flex;
   flex-wrap: wrap;
@@ -59,6 +54,7 @@ $common-width-100-percent: 100%;
   width: $common-width-100-percent;
   max-width: 800px;
   padding: 0 10px;
+  margin: 30px;
 
   .kkkk {
     width: 48%; // Geniş ekranda yan yana durmasını sağlamak için %48 genişliği ayarlayın
