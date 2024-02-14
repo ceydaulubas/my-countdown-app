@@ -1,34 +1,49 @@
-import { Directive, ElementRef, AfterViewInit, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, AfterViewInit, Input } from '@angular/core';
 
 @Directive({
   selector: '[appFitText]'
 })
 export class FitTextDirective implements AfterViewInit {
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  @Input() minFontSize: number = 10;
+  @Input() maxFontSize: number = 300;
+
+  constructor(private el: ElementRef) { }
 
   ngAfterViewInit() {
-    this.resizeText();
-  }
+    const element = this.el.nativeElement as HTMLElement;
 
-  @HostListener('window:resize')
-  onResize() {
-    this.resizeText();
-  }
-  
-  resizeText() {
-    if (this.el) { 
-      const fitWidth = this.el.nativeElement.offsetWidth;
-    const inner = this.el.nativeElement.querySelector('.fit-inner');
-    if (!inner) {
-      const innerElement = this.renderer.createElement('span');
-      innerElement.classList.add('fit-inner');
-      this.renderer.appendChild(this.el.nativeElement, innerElement);
-      this.renderer.appendChild(innerElement, this.el.nativeElement.firstChild);
+    // Initial font assignment based on maxFontSize:
+    const originalFontSize = element.style.fontSize ? parseInt(element.style.fontSize) : 16;
+    let fontSize = originalFontSize;
+    if(fontSize > this.maxFontSize) {
+      fontSize = this.maxFontSize; 
     }
-    const innerWidth = inner.offsetWidth;
+    element.style.fontSize = `${fontSize}px`;
 
-    const calc = innerWidth / fitWidth;
-    this.renderer.setStyle(this.el.nativeElement, 'fontSize', `${calc}rem`);
+    // Check element width and overflow status
+    let scrollWidth = element.scrollWidth;
+    const offsetWidth = element.offsetWidth;
+
+    let calculatedWidth = `${offsetWidth}px`; 
+
+    if (scrollWidth > offsetWidth ) {
+      // Font reduction if there is overflow
+      while (scrollWidth > offsetWidth && fontSize > this.minFontSize) {
+        fontSize--;
+
+        element.style.fontSize = `${fontSize}px`;
+        scrollWidth = element.scrollWidth;
+
+        calculatedWidth = `${offsetWidth - 1}px`; 
+        this.el.nativeElement.style.maxWidth = calculatedWidth;
+      }
+
+      // Cut text with ellipsis
+      if (scrollWidth > offsetWidth) {
+        element.style.overflow = 'hidden';
+        element.style.textOverflow = 'ellipsis';
+      }
+    }
   }
-  }
+
 }

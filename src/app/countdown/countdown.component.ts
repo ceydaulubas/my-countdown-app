@@ -93,7 +93,6 @@ export class CountdownComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   calculateTimeDifference(targetDate: Date | null): string {
-    // neww
     this.save('date', targetDate)
 
     if (targetDate) {

@@ -28,14 +28,20 @@ $common-width-100-percent: 100%;
   @include countdownHeader-margin;
 }
 
+.first-info-title{
+  font-size: clamp(28px, 2vw, 200px);
+  color: #c841af;
+  margin: 0 20px;
+  text-align: center;
+}
+
 .title {
   color: #72035d;
   width: 100%;
   font-weight: 800;
   // overflow: hidden;
   white-space: nowrap;
-font-size: 120px;
-  // font-size: clamp(28px, 2vw, 200px);
+  font-size: clamp(28px, 8vw, 100px);
 }
 
 .fit-inner {
