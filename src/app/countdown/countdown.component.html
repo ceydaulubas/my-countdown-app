@@ -1,5 +1,8 @@
 <div class="container">
-  <h1 *ngIf="!countdownForm.title" class="first-info-title">
+  <h1
+    *ngIf="!countdownForm.title && !countdownForm.date"
+    class="first-info-title"
+  >
     Enter Event Name and Date to See How Many Days Until!
   </h1>
   <div class="countdownHeader">
