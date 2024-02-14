@@ -40,6 +40,7 @@ Before proceeding with the installation, make sure you have Node.js and npm inst
 - Implement server-side rendering (SSR) with appropriate permissions for localStorage to enable persistence of event data on the server side.
 - Implement unit tests for critical components and functionality.
 - Consider adding internationalization (i18n) support for displaying countdown in multiple languages.
+- To enhance user experience, clicking on today's date could potentially redirect users to a website providing additional information about the event. However, as this feature wasn't specified I've added emojis to indicate its potential usefulness.
 
 ## Deployment
 
