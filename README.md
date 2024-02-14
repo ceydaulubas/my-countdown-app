@@ -50,15 +50,20 @@ The application deployed to Netlify.
 
 ## View on Screen
 
-<img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.21.25_bonofp.png" alt="Scree1" width="300">
-<img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.24.45_fyffof.png" alt="Scree2" width="300">
-<img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911263/Screenshot_2024-02-14_at_14.44.50_qrgamx.png" alt="Scree3" width="300">
+<div style="text-align: center;">
+    <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.21.25_bonofp.png" alt="Screen1" width="450" style="margin: 50px;">
+    <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.24.45_fyffof.png" alt="Screen2" width="450" style="margin: 50px;">
+</div>
 
-<img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.21.54_aya3nk.png" alt="Scree4" width="300">
-<img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.24.14_gprnsd.png" alt="Scree4" width="300">
-<img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.23.38_rnvn5x.png" alt="Scree4" width="300">
+<div style="text-align: center;">
+    <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911263/Screenshot_2024-02-14_at_14.44.50_qrgamx.png" alt="Screen3" width="900" style="margin: 50px;">
+</div>
 
-
+<div style="text-align: center;">
+    <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.21.54_aya3nk.png" alt="Screen4" width="300" height="auto" style="margin: 50px;">
+    <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.24.14_gprnsd.png" alt="Screen4" width="300" height="auto" style="margin: 50px;">
+    <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.23.38_rnvn5x.png" alt="Screen4" width="300" height="auto" style="padding: 50px;">
+</div>
 
 
 
