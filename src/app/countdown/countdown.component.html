@@ -1,10 +1,14 @@
 <div class="container">
-  <h1 *ngIf="!countdownForm.title" class="first-info-title">Enter Event Name and Date to See How Many Days Until!</h1>
+  <h1 *ngIf="!countdownForm.title" class="first-info-title">
+    Enter Event Name and Date to See How Many Days Until!
+  </h1>
   <div class="countdownHeader">
-    <h1 class="title" #titleElement appFitText >
-      {{ countdownForm.title ? 'Time to ' + camelCaseTitle : countdownForm.title }}
+    <h1 class="title" #titleElement appFitText>
+      {{
+        countdownForm.title ? 'Time to ' + camelCaseTitle : countdownForm.title
+      }}
     </h1>
-    <h1 class="date" >
+    <h1 class="date">
       {{
         isToday(countdownForm.date)
           ? ' 🎉🎉🎉🎉🎉🎉🎉🎉'
@@ -19,7 +23,12 @@
   <div class="form-fields">
     <mat-form-field appearance="outline" class="kkkk">
       <mat-label>Title</mat-label>
-      <input matInput placeholder="Time to ..." [(ngModel)]="countdownForm.title" (keyup)=titleChange($event)/>
+      <input
+        matInput
+        placeholder="Time to ..."
+        [(ngModel)]="countdownForm.title"
+        (keyup)="titleChange($event)"
+      />
       <mat-icon matSuffix class="mat-icon-dark-grey">create</mat-icon>
     </mat-form-field>
 

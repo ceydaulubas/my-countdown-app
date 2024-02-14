@@ -28,7 +28,7 @@ $common-width-100-percent: 100%;
   @include countdownHeader-margin;
 }
 
-.first-info-title{
+.first-info-title {
   font-size: clamp(28px, 2vw, 200px);
   color: #c841af;
   margin: 0 20px;
@@ -50,7 +50,7 @@ $common-width-100-percent: 100%;
   width: 100%;
   font-weight: 400;
   line-height: 48px;
-  font-size: clamp(32px, 9vw, 400px); 
+  font-size: clamp(32px, 9vw, 400px);
   margin: 7% 0 4% 0;
 }
 
@@ -65,20 +65,20 @@ $common-width-100-percent: 100%;
 
   .kkkk {
     width: 48%;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 
   @media only screen and (max-width: 480px) {
     .kkkk {
-      width: 100%; 
+      width: 100%;
       margin: 10px 50px;
     }
   }
 }
 
 .mat-form-field {
-  width: 100%; 
-  margin-bottom: 20px; 
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .mat-icon-dark-grey {

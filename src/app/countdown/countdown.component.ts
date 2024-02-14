@@ -1,4 +1,11 @@
-import {  Component, OnDestroy, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core'
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -35,7 +42,6 @@ import { TimeService } from '../services/time.service'
   styleUrl: './countdown.component.scss',
 })
 export class CountdownComponent implements OnInit, OnDestroy, AfterViewInit {
-
   constructor(private timeService: TimeService) {}
 
   countdownForm: CountdownForm = {
@@ -48,13 +54,12 @@ export class CountdownComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private intervalId: any
   selectedDate: any
-  
-  @ViewChild('titleElement') titleElement: ElementRef | undefined;
+
+  @ViewChild('titleElement') titleElement: ElementRef | undefined
   @ViewChild('myDatepicker') datepicker: MatDatepicker<Date> | undefined
   @ViewChild('myDateInput') dateInput: MatDatepickerInput<Date> | undefined
 
   ngOnInit() {
-
     const val = this.get('title')
     if (val) {
       this.countdownForm.title = val
@@ -64,20 +69,17 @@ export class CountdownComponent implements OnInit, OnDestroy, AfterViewInit {
       this.countdownForm.date = date
     }
     this.startCountdown()
-    
   }
 
   ngAfterViewInit() {
     window.setInterval(() => {
-      this.resizeText();
-    }, 2000); 
+      this.resizeText()
+    }, 2000)
   }
 
   resizeText() {
-    if(this.titleElement)
-    this.titleElement.nativeElement.resizeText();  
+    if (this.titleElement) this.titleElement.nativeElement.resizeText()
   }
- 
 
   ngOnDestroy() {
     if (this.intervalId) {
@@ -107,10 +109,9 @@ export class CountdownComponent implements OnInit, OnDestroy, AfterViewInit {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
     })
   }
-  
 
   public save(key: string, value: any) {
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, value)
   }
 
   public get(key: string): any {
@@ -120,15 +121,15 @@ export class CountdownComponent implements OnInit, OnDestroy, AfterViewInit {
     this.save('title', e.target.value)
     this.countdownForm.title = this.get('title') || ''
   }
-  
-isToday(date: Date | null): boolean {
-  if (date === null) {
-    return false;
+
+  isToday(date: Date | null): boolean {
+    if (date === null) {
+      return false
+    }
+
+    const today = new Date()
+    const dateFromLocalStorage = new Date(date) // Convert string to date
+
+    return dateFromLocalStorage.toDateString() === today.toDateString()
   }
-
-  const today = new Date();
-  const dateFromLocalStorage = new Date(date); // Convert string to date
-
-  return dateFromLocalStorage.toDateString() === today.toDateString();
-}
 }

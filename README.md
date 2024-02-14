@@ -20,7 +20,6 @@ Before proceeding with the installation, make sure you have Node.js and npm inst
 
 3. Install dependencies: `npm install`
 
-
 ## Usage
 
 1. Start the development server: `ng serve`
@@ -46,7 +45,7 @@ Before proceeding with the installation, make sure you have Node.js and npm inst
 
 The application deployed to Netlify.
 
-[Live Demo](<https://events-countdown.netlify.app/>)
+[Live Demo](https://events-countdown.netlify.app/)
 
 ## View on Screen
 
@@ -64,7 +63,3 @@ The application deployed to Netlify.
     <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.24.14_gprnsd.png" alt="Screen4" width="300" height="auto" style="margin: 50px;">
     <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1707911262/Screenshot_2024-02-14_at_13.23.38_rnvn5x.png" alt="Screen4" width="300" height="auto" style="padding: 50px;">
 </div>
-
-
-
-
