@@ -1,7 +1,7 @@
 <div class="container">
   <h1 *ngIf="!countdownForm.title">Time to ...</h1>
   <div class="countdownHeader">
-    <h1 class="title">
+    <h1 class="title" #titleElement appFitText >
       {{ countdownForm.title ? 'Time to ' + camelCaseTitle : countdownForm.title }}
     </h1>
     <h1 class="date" >

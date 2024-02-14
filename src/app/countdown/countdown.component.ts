@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
+import {  Component, OnDestroy, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -8,7 +8,6 @@ import { CountdownForm } from '../interfaces/countdownForm'
 import {
   MatDatepicker,
   MatDatepickerInput,
-  MatDatepickerInputEvent,
   MatDatepickerModule,
 } from '@angular/material/datepicker'
 import { provideNativeDateAdapter } from '@angular/material/core'
@@ -35,7 +34,8 @@ import { TimeService } from '../services/time.service'
   ],
   styleUrl: './countdown.component.scss',
 })
-export class CountdownComponent implements OnInit, OnDestroy {
+export class CountdownComponent implements OnInit, OnDestroy, AfterViewInit {
+
   constructor(private timeService: TimeService) {}
 
   countdownForm: CountdownForm = {
@@ -48,7 +48,8 @@ export class CountdownComponent implements OnInit, OnDestroy {
 
   private intervalId: any
   selectedDate: any
-
+  
+  @ViewChild('titleElement') titleElement: ElementRef | undefined;
   @ViewChild('myDatepicker') datepicker: MatDatepicker<Date> | undefined
   @ViewChild('myDateInput') dateInput: MatDatepickerInput<Date> | undefined
 
@@ -59,13 +60,24 @@ export class CountdownComponent implements OnInit, OnDestroy {
       this.countdownForm.title = val
     }
     const date = this.get('date')
-    console.log(date)
     if (date) {
       this.countdownForm.date = date
     }
     this.startCountdown()
     
   }
+
+  ngAfterViewInit() {
+    window.setInterval(() => {
+      this.resizeText();
+    }, 2000); 
+  }
+
+  resizeText() {
+    if(this.titleElement)
+    this.titleElement.nativeElement.resizeText();  
+  }
+ 
 
   ngOnDestroy() {
     if (this.intervalId) {
