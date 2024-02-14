@@ -65,7 +65,13 @@ export class CountdownComponent implements OnInit, OnDestroy, AfterViewInit {
       this.countdownForm.title = val
     }
     const date = this.get('date')
-    if (date!==null && date!==undefined && date!=='null' && date!=='undefined' && date!=='') {
+    if (
+      date !== null &&
+      date !== undefined &&
+      date !== 'null' &&
+      date !== 'undefined' &&
+      date !== ''
+    ) {
       this.countdownForm.date = date
     }
     this.startCountdown()
