@@ -1,6 +1,6 @@
 <div class="container">
   <h1
-    *ngIf="!countdownForm.title && !countdownForm.date"
+    *ngIf="!countdownForm.title || !countdownForm.date"
     class="first-info-title"
   >
     Enter Event Name and Date to See How Many Days Until!
@@ -22,6 +22,7 @@
       >No date selected yet. Please select date.</span
     >
   </div>
+  
 
   <div class="form-fields">
     <mat-form-field appearance="outline" class="kkkk">
